@@ -1,5 +1,25 @@
+f_toolscheck()
+{
+    
+info="REQUIES TOOL NOT FOUND! INSTALL IT USING INSTALL.SH..."
+    
+    command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v macchanger >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v speedtest-cli >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v figlet >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    
+}
+
+
+
+
+
+
+
+
 banner()
 {
+    f_toolscheck
     clear
     printf '\e[93m
  8888b.  888  888 888d888 8888b.      
@@ -318,9 +338,139 @@ mmode()
 }
 
 
+####################################################################
 
+mac()
+{
+    banner
+    printf "\e[0m
+(1) SET CUSTOM MAC ADDRES
+(2) SET RANDOM MAC ADDRES
+(3) RESET MAC ADDRES\n
+(4) BACK\n
+"
+read -p "SELECT: " select
+case $select in
 
+1) mac1 ;;
 
+2) mac2;;
 
+3) mac3;;
 
-auramenu
+4) auramenu;;
+
+*) printf "\e[93mINCORRECT OPTION...\n"; exit;;
+esac
+}
+
+mac1()
+{
+    banner
+    printf "\e[0m\n"
+    read -p "MAC ADDRES: " MAC
+    read -p "INTERFACE: " iface
+    printf "\e[93m\n"
+    read -r -p "CHANGE MAC ADDRES ON $iface? (Y/N): " questyorn
+    printf "\n"
+    case $questyorn in
+        [yY][eE][sS]|[yY])
+            ifconfig $iface down
+            macchanger -m $MAC $iface
+            ifconfig $iface up
+            printf "\n"
+            read -p "DONE! PRESS [ENTER] TO BACK..." variable
+            auramenu
+            ;;
+        [nN][oO]|[nN])
+            printf "\e[93mBACKING TO MENU..."
+            sleep 1.2
+            auramenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n"
+        ;;
+    esac
+}
+    
+mac2()
+{
+    banner
+    printf "\e[0m\n"
+    read -p "INTERFACE: " iface
+    printf "\e[93m\n"
+    read -r -p "CHANGE MAC ADDRES ON $iface? (Y/N): " questyorn
+    printf "\n"
+    case $questyorn in
+        [yY][eE][sS]|[yY])
+            ifconfig $iface down
+            macchanger -a $iface
+            ifconfig $iface up
+            printf "\n"
+            read -p "DONE! PRESS [ENTER] TO BACK..." variable
+            auramenu
+            ;;
+        [nN][oO]|[nN])
+            printf "\e[93mBACKING TO MENU..."
+            sleep 1.2
+            auramenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n"
+        ;;
+    esac
+}
+
+mac3()
+{
+    banner
+    printf "\e[0m\n"
+    read -p "INTERFACE: " iface
+    printf "\e[93m\n"
+    read -r -p "CHANGE MAC ADDRES ON $iface? (Y/N): " questyorn
+    printf "\n"
+    case $questyorn in
+        [yY][eE][sS]|[yY])
+            ifconfig $iface down
+            macchanger -p $iface
+            ifconfig $iface up
+            printf "\n"
+            read -p"DONE! PRESS [ENTER] TO BACK..." variable
+            auramenu
+            ;;
+        [nN][oO]|[nN])
+            printf "\e[93mBACKING TO MENU..." 
+            sleep 1.2
+            auramenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n"
+        ;;
+    esac
+}
+
+ispeed()
+{
+    banner
+    printf "\e[0m\n"
+    speedtest-cli
+    printf "\e[93m\n"
+    read -p "PRESS [ENTER] TO BACK..." variable
+    auramenu
+}
+
+ifaces()
+{
+    banner
+    printf "\e[0m\n"
+    printf "\e[93mLIST OF AVAILABLE INTERFACES:\e[0m\n"
+    printf "\n"
+    iw dev | awk '$1=="Interface"{print $2}'
+    printf "\n\e[93m"
+    read -p "PRESS [ENTER] TO BACK..." variable
+    auramenu
+    
+    
+}
+
+auramenu 
