@@ -10,13 +10,6 @@ info="REQUIES TOOL NOT FOUND! INSTALL IT USING INSTALL.SH..."
     
 }
 
-
-
-
-
-
-
-
 banner()
 {
     f_toolscheck
@@ -179,7 +172,7 @@ f_apscan()
                     printf "\e[93m"
                     printf "STARTING SCAN...\e[0m\n"
                     sleep 1
-                    airodump-ng -w $cap --output-format $format $iface
+                    airodump-ng -w $cap --output-format csv $iface
                     ;;
                 [nN][oO]|[nN])
                     printf "\e[93m\nBACKING TO MENU..."
@@ -237,7 +230,7 @@ f_cliscan()
                     printf "\e[93m"
                     printf "STARTING SCAN...\e[0m\n"
                     sleep 1
-                    airodump-ng --bssid $bssid -w $cap --output-format $format $iface
+                    airodump-ng --bssid $bssid -w $cap --output-format csv $iface
                     ;;
                 [nN][oO]|[nN])
                     printf "\e[93m\nBACKING TO MENU..."
