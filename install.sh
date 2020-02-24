@@ -15,6 +15,7 @@ banner()
 banner
 read -p "PRESS [ENTER] TO INSTALL..."
 printf "\nINSTALLING...\n"
+chmod +x aura.sh
 apt update 
 apt-get install aircrack-ng -y 
 apt-get install macchanger -y 
