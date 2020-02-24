@@ -14,11 +14,11 @@ banner()
 
 banner
 read -p "PRESS [ENTER] TO INSTALL..."
-printf "\nINSTALLING...\n"
+printf "\nINSTALLING...\n\e[0m"
 chmod +x aura.sh
 apt update 
 apt-get install aircrack-ng -y 
 apt-get install macchanger -y 
 apt-get install speedtest-cli -y
 apt-get install figlet -y
-printf "\nDONE!\n"
+printf "\e[93m\nDONE!\n"
