@@ -593,7 +593,7 @@ settings()
     banner
     printf "\e[0m
 (1) CHECK INTERNET SPEED
-(2) CLEAN RAM MEMORY\n
+(2) THE CLEANER\n
 (3) BACK\n
 "
 read -p "SELECT: " set
@@ -609,7 +609,31 @@ esac
 
 cleanram()
 {
-    
+banner
+printf "\e[0m\n\e[93mTHE CLEANER\e[92m\n*DELETE ALL LOGS SAVED IN AURA FOLDER\n*CLEAR YOU RAM MEMORY\n*CLEAR SWAP MEMORY"
+printf "\e[93m\n"
+read -r -p "RUN CLEANER? (Y/N): " questyorn
+printf "\n"
+case $questyorn in
+    [yY][eE][sS]|[yY])
+            printf "CLEANING..."
+            printf "\e[0m\n"
+            sync; echo 3 > /proc/sys/vm/drop_caches 
+            rm -f *.csv 
+            swapoff -a && swapon -a
+            printf "\n\e[93m"
+            read -p"DONE! PRESS [ENTER] TO BACK..." variable
+            auramenu
+            ;;
+    [nN][oO]|[nN])
+            printf "\e[93mBACKING TO MENU..." 
+            sleep 1.2
+            auramenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n";exit
+        ;;
+esac
 }
 
 rootcheck
