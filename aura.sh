@@ -593,15 +593,17 @@ settings()
     banner
     printf "\e[0m
 (1) CHECK INTERNET SPEED
-(2) THE CLEANER\n
-(3) BACK\n
+(2) THE CLEANER
+(3) UPDATE SCRIPT\n
+(4) BACK\n
 "
 read -p "SELECT: " set
 case $set in
 
 1) ispeed;;
 2) cleanram;;
-3) auramenu;;
+3) f_update
+4) auramenu;;
 *) printf "\e[93mINCORRECT OPTION...\n"; exit;;
 esac
 
