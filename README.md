@@ -2,8 +2,8 @@
 + sudo bash install.sh
 + sudo bash aura.sh
 
-#aura
+# aura
 The Wireless-Attacking script...
 
-#0.1
+# 0.1
 +
