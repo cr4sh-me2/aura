@@ -602,7 +602,7 @@ case $set in
 
 1) ispeed;;
 2) cleanram;;
-3) f_update
+3) f_update;;
 4) auramenu;;
 *) printf "\e[93mINCORRECT OPTION...\n"; exit;;
 esac
