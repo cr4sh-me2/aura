@@ -18,3 +18,4 @@ The Wireless-Attacking script...
 + Internet speedtest option in settings
 + Fixed colors
 + The Cleaner option
++ New options in monitor mode menu
