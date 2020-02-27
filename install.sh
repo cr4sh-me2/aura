@@ -21,4 +21,5 @@ apt-get install aircrack-ng -y
 apt-get install macchanger -y 
 apt-get install speedtest-cli -y
 apt-get install figlet -y
+chmod +x aura.sh
 printf "\nDONE!\n"
