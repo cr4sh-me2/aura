@@ -570,7 +570,7 @@ ifaces()
 {
     banner
     printf "\e[0m\n"
-    printf "\e[96mMOJE IP:\e[92m $(curl -s ifconfig.me)\n\e[93m------------------------"
+    printf "\e[93m----------------------\n\e[96mMOJE IP:\e[92m $(curl -s ifconfig.me)\n\e[93m----------------------\n"
     printf "\e[93mLIST OF AVAILABLE INTERFACES:\e[0m\n"
     printf "\n"
     ip -o link | grep ether | awk '{ print $2" "$17 }'
