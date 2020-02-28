@@ -20,3 +20,6 @@ The Wireless-Attacking script...
 + Fixed colors
 + The Cleaner option
 + New options in monitor mode menu
+
+# 0.3
++ WireShow
