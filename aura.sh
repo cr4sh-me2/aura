@@ -657,8 +657,10 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             chmod +x aura.sh
             bash aura.sh
             printf "\n\e[93m"
-            read -p "DONE! PRESS [ENTER]..." variable
+            printf "DONE!"
+            sleep 1.2
             bash aura.sh
+
             ;;
         [nN][oO]|[nN])
             printf "\e[93mBACKING TO MENU..."
