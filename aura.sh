@@ -659,8 +659,7 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             printf "\n\e[93m"
             printf "DONE!"
             sleep 1.2
-            bash aura.sh
-
+            exit
             ;;
         [nN][oO]|[nN])
             printf "\e[93mBACKING TO MENU..."
