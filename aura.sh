@@ -19,7 +19,7 @@ printf '
     \e[38;5;208m"88b 888  888 888P"      "88b 
 \e[93m.d888888 888  888 888    .d888888  
 \e[92m888  888 Y88b 888 888    888  888 
-\e[94m"Y888888  "Y88888 888    "Y888888 \e[0mv0.3a\n'
+\e[94m"Y888888  "Y88888 888    "Y888888 \e[0mv0.3b\n'
 }
 
 auramenu()
@@ -642,7 +642,7 @@ esac
 f_update()
 {
     banner
-    printf "\e[96mUPDATING...\n"
+    printf "\n\e[93mUPDATING...\n"
     sleep 1
     rm aura.sh
     wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
