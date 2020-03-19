@@ -655,10 +655,10 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             rm aura.sh
             wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
             chmod +x aura.sh
-            bash aura.sh
             printf "\n\e[93m"
             printf "DONE!"
             sleep 1.2
+            bash aura.sh
             exit
             ;;
         [nN][oO]|[nN])
