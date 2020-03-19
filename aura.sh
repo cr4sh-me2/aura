@@ -669,6 +669,7 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             ;;
         *)
         printf "\e[93mINCORRECT OPTION...\n"
+        exit
         ;;
     esac
 }
