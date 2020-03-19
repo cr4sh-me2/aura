@@ -22,4 +22,7 @@ The Wireless-Attacking script...
 + New options in monitor mode menu
 
 # 0.3
-+ WireShow
++ Show wireless interfaces option
++ Show wireless interfaces mac addres
++ Show IP addres
+
