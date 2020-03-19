@@ -642,12 +642,12 @@ esac
 f_update()
 {
     banner
-    printf "\n\e[93mUPDATING...\n"
+    printf "\n\e[93mUPDATING...\e[0m\n"
     sleep 1
     rm aura.sh
     wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
     chmod +x aura.sh
-    printf "\nDONE!"
+    printf "\n\e[93mDONE!\e[0m"
     sleep 1
     bash aura.sh
 }
