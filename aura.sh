@@ -642,7 +642,7 @@ esac
 f_update()
 {
     banner
-    printf "\n\e[93mUPDATING...\e[0m\n"
+    printf "\n\e[93mUPDATING...\e[0m\n\n"
     sleep 1
     rm aura.sh
     wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
