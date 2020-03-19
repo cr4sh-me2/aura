@@ -641,15 +641,34 @@ esac
 
 f_update()
 {
-    banner
-    printf "\n\e[93mUPDATING...\e[0m\n\n"
-    sleep 1
-    rm aura.sh
-    wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
-    chmod +x aura.sh
-    printf "\n\e[93mDONE!\e[0m"
-    sleep 1
-    bash aura.sh
+    
+banner
+printf "\n\e[93m"
+read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
+    printf "\n"
+    case $questyorn in
+        [yY][eE][sS]|[yY])
+            printf "\e[0m"
+            banner
+            printf "\n\e[93mUPDATING...\e[0m\n\n"
+            sleep 1
+            rm aura.sh
+            wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
+            chmod +x aura.sh
+            bash aura.sh
+            printf "\n\e[93m"
+            read -p "DONE! PRESS [ENTER]..." variable
+            bash aura.sh
+            ;;
+        [nN][oO]|[nN])
+            printf "\e[93mBACKING TO MENU..."
+            sleep 1.2
+            auramenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n"
+        ;;
+    esac
 }
 
 rootcheck
