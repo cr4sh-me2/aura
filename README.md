@@ -23,6 +23,10 @@ The Wireless-Attacking script...
 
 # 0.3
 + Show IP addres
-# 0.3a
-+ Update script option
++ Color improved
+
+# 0.4
++ Script update option
++ Crack .cap file (aircrack-ng)
++ New UI
 
