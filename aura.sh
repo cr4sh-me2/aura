@@ -29,13 +29,14 @@ auramenu()
 (1) DEAUTH WI-FI/CLIENT
 (2) SCAN FOR WI-FI/CLIENT
 (3) MONITOR MODE MENU
-(4) CHANGE MAC ADDRES\n
+(4) CHANGE MAC ADDRES
 (5) SHOW WIRELESS IFACES
-(6) SETTINGS
-(7) EXIT\n
+(6) CRACK CAPTURE\n
+(7) SETTINGS
+(8) EXIT\n
 "
 read -p "SELECT: " auramenu
-    case $auramenu in
+case $auramenu in
     
     1) aurajammer ;;
     
@@ -47,9 +48,11 @@ read -p "SELECT: " auramenu
     
     5) ifaces;;
     
-    6) settings ;;
+    6) crackcap ;;
     
-    7) exit ; clear ;;
+    7) settings ;;
+    
+    8) exit ; clear ;;
     
     *) printf "\e[93mINCORRECT OPTION...\n"; exit;;
     esac
@@ -66,7 +69,7 @@ aurajammer()
 (3) BACK\n
 "
 read -p "SELECT: " deauth
-    case $deauth in
+case $deauth in
     
     1) f_wifi ;;
     
@@ -670,6 +673,209 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
         ;;
     esac
 }
+
+crackcap()
+{
+    
+if [ -e rockyou.txt ]
+then
+    crackmenu
+else
+    crackap2
+fi
+    
+}
+
+crackmenu()
+{
+    banner
+    printf "\e[0m
+(1) CRACK WEP CAPTURE
+(2) CRACK WPA/WPA2 CAPTURE\n
+(3) BACK
+
+"
+read -p "SELECT: " sel
+case $sel in
+1) wep_crack ;;
+2) wpa_crack ;;
+3) auramenu ;;
+*) printf "\e[93mINCORRECT OPTION...\n";exit ;;
+esac
+}
+
+
+wep_crack()
+{
+    
+    banner
+    printf "\e[0m\n"
+    read -p "TARGET CAPTURE BSSID: " bssid
+    read -p "CAPTURE FILE (.cap): " capture
+    printf "\e[93m\n"
+    read -p "USE CUSTOM WORDLIST OR ROCKYOU WORDLIST? (c/r): " quest
+    case $quest in
+        [cC][uU][sS][tT][oO][mM]|[cC])
+            printf "\e[0m"
+            read -p "WORDLIST (.txt): " wordlist
+            printf "\e[93m\n"
+            read -p "CRACK $capture? (y/n): " capturequest
+            case $capturequest in
+                [yY][eE][sS]|[yY])
+                    printf "\nCRACKING...\n\e[0m"
+                    sleep 1
+                    aircrack-ng -a1 -b $bssid -w $wordlist $capture
+                    printf "\n\e[93m"
+                    read -p "DONE! PRESS [ENTER] TO BACK..." variable
+                    auramenu
+                    ;;
+                [nN][oO]|[nN])
+                    printf "\e[93mBACKING TO MENU..."
+                    sleep 1.2
+                    auramenu
+                    ;;
+                *)
+                printf "\e[93mINCORRECT OPTION...\n";exit
+                ;;
+            esac
+            ;;
+        [rR][oO][cC][kK][yY][oO][uU]|[rR])
+                if [ -e rockyou.txt ]
+                then 
+                    check1
+                else 
+                    crackap2
+                fi
+                ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n";exit
+        ;;
+    esac
+    
+}
+
+
+
+wpa_crack()
+{
+    
+    banner
+    printf "\e[0m\n"
+    read -p "TARGET CAPTURE BSSID: " bssid
+    read -p "CAPTURE FILE (.cap): " capture
+    printf "\e[93m\n"
+    read -p "USE CUSTOM WORDLIST OR ROCKYOU WORDLIST? (c/r): " quest
+    case $quest in
+        [cC][uU][sS][tT][oO][mM]|[cC])
+            printf "\e[0m"
+            read -p "WORDLIST (.txt): " wordlist
+            printf "\e[93m\n"
+            read -p "CRACK $capture? (y/n): " capturequest
+            case $capturequest in
+                [yY][eE][sS]|[yY])
+                    printf "\nCRACKING...\n\e[0m"
+                    sleep 1
+                    aircrack-ng -a2 -b $bssid -w $wordlist $capture
+                    printf "\n\e[93m"
+                    read -p "DONE! PRESS [ENTER] TO BACK..." variable
+                    auramenu
+                    ;;
+                [nN][oO]|[nN])
+                    printf "\e[96mBACKING TO MENU..."
+                    sleep 1.2
+                    auramenu
+                    ;;
+                *)
+                printf "\e[93mINCORRECT OPTION...\n";exit
+                ;;
+            esac
+            ;;
+        [rR][oO][cC][kK][yY][oO][uU]|[rR])
+            if [ -e rockyou.txt ]
+            then
+                check2
+            else
+                crackap2
+            fi
+            ;;
+        *) printf "\e[93mINCORRECT OPTION...\n";exit
+        ;;
+    esac
+}
+
+crackap2()
+{
+    banner
+    printf "\e[0m"
+    printf "\n\e[93mROCKYOU.TXT NOT FOUND IN AURA FOLDER!\nYOU CAN CONTINUE WITHOUT IT\n\e[0m"
+    read -p "DOWNLOAD ROCKYOU WORLDLIST (134MB) (y/n): " download
+    case $download in
+        [yY][eE][sS]|[yY])
+            printf "\n\e[93mDOWNLOADING... THIS CAN TAKE A WHILE.\e[0m\n"
+            sleep 1
+            curl -L -o rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+            printf "\e[93m\nDONE!\e[0m"
+            sleep 1.2
+            crackmenu
+            ;;
+        [nN][oO]|[nN])
+            crackmenu
+            ;;
+        *)
+        printf "\e[93mINCORRECT OPTION...\n";exit
+        ;;
+    esac
+}
+
+
+check1()
+{
+            printf "\e[93m\n"
+            read -p "CRACK $capture? (y/n): " capturequest
+            case $capturequest in
+                [yY][eE][sS]|[yY])
+                    printf "\nCRACKING...\n\e[0m"
+                    sleep 1
+                    aircrack-ng -a1 -b $bssid -w rockyou.txt $capture
+                    printf "\n\e[93m"
+                    read -p "DONE! PRESS [ENTER] TO BACK..." variable
+                    auramenu
+                    ;;
+                [nN][oO]|[nN])
+                    printf "\e[96mBACKING TO MENU..."
+                    sleep 1.2
+                    auramenu
+                    ;;
+                *)
+                printf "\e[93mINCORRECT OPTION...\n";exit
+                ;;
+            esac
+}
+
+check2()
+{
+            printf "\e[93m\n"
+            read -p "CRACK $capture? (y/n): " capturequest
+            case $capturequest in
+                [yY][eE][sS]|[yY])
+                    printf "\nCRACKING...\n\e[0m"
+                    sleep 1
+                    aircrack-ng -a2 -b $bssid -w rockyou.txt $capture
+                    printf "\n\e[93m"
+                    read -p "DONE! PRESS [ENTER] TO BACK..." variable
+                    auramenu
+                    ;;
+                [nN][oO]|[nN])
+                    printf "\e[96mBACKING TO MENU..."
+                    sleep 1.2
+                    auramenu
+                    ;;
+                *)
+                printf "\e[93mINCORRECT OPTION...\n";exit
+                ;;
+            esac
+}
+
 
 rootcheck
 auramenu 
