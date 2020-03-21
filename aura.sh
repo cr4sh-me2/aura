@@ -19,22 +19,31 @@ printf '
     \e[38;5;208m"88b 888  888 888P"      "88b 
 \e[93m.d888888 888  888 888    .d888888  
 \e[92m888  888 Y88b 888 888    888  888 
-\e[94m"Y888888  "Y88888 888    "Y888888 \e[0mv0.3a\n'
+\e[94m"Y888888  "Y88888 888    "Y888888 \e[0mv0.4\n'
 }
 
 auramenu()
 {
     banner
     printf "\e[0m
+--------------------------" | lolcat -F 3
+printf "
 (1) DEAUTH WI-FI/CLIENT
 (2) SCAN FOR WI-FI/CLIENT
 (3) MONITOR MODE MENU
 (4) CHANGE MAC ADDRES
 (5) SHOW WIRELESS IFACES
-(6) CRACK CAPTURE\n
-(7) SETTINGS
-(8) EXIT\n
+(6) CRACK CAPTURE
 "
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
+(7) SETTINGS
+"
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
+(8) EXIT\n
+" 
+
 read -p "SELECT: " auramenu
 case $auramenu in
     
@@ -63,9 +72,12 @@ case $auramenu in
 aurajammer()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) DEAUTH WI-FI 
-(2) DEAUTH CLIENT\n
+(2) DEAUTH CLIENT\n"
+    printf "\e[0m--------------------------" | lolcat -F 3
+printf "
 (3) BACK\n
 "
 read -p "SELECT: " deauth
@@ -141,9 +153,12 @@ f_client()
 aurascanner()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) SCAN FOR WI-FI
-(2) SCAN FOR CLIENTS\n
+(2) SCAN FOR CLIENTS\n"
+    printf "\e[0m--------------------------" | lolcat -F 3
+    printf "
 (3) BACK\n
 "
 read -p "SELECT: " select
@@ -281,9 +296,12 @@ f_cliscan()
 mmmode()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) ENABLE MONITOR MODE
-(2) DISABLE MONITOR MODE\n
+(2) DISABLE MONITOR MODE\n"
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
 (3) BACK\n
 "
 read -p "SELECT: " select
@@ -450,10 +468,13 @@ mmodeoff()
 mac()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) SET CUSTOM MAC ADDRES
 (2) SET RANDOM MAC ADDRES
-(3) RESET MAC ADDRES\n
+(3) RESET MAC ADDRES\n"
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
 (4) BACK\n
 "
 read -p "SELECT: " select
@@ -595,10 +616,13 @@ fi
 settings()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) CHECK INTERNET SPEED
 (2) THE CLEANER
-(3) UPDATE SCRIPT\n
+(3) UPDATE SCRIPT\n"
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
 (4) BACK\n
 "
 read -p "SELECT: " set
@@ -689,9 +713,12 @@ fi
 crackmenu()
 {
     banner
+    printf "\n\e[0m--------------------------" | lolcat -F 3
     printf "\e[0m
 (1) CRACK WEP CAPTURE
-(2) CRACK WPA/WPA2 CAPTURE\n
+(2) CRACK WPA/WPA2 CAPTURE\n"
+printf "\e[0m--------------------------" | lolcat -F 3
+printf "
 (3) BACK
 
 "
