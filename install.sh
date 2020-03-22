@@ -25,6 +25,7 @@ apt-get install ruby -y
 apt-get install wget -y
 apt-get install curl -y
 apt-get install unzip -y
+apt-get install l2ping -y
 wget https://github.com/busyloop/lolcat/archive/master.zip
 unzip master.zip
 rm -r master.zip
