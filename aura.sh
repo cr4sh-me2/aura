@@ -16,6 +16,12 @@ info="\n\e[0m[\e[91m!\e[0m] REQUIES TOOL NOT FOUND! INSTALL IT USING INSTALL.SH.
     command -v macchanger >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
     command -v speedtest-cli >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
     command -v figlet >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v l2ping >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v ruby >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v lolcat >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v unzip >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v curl >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
+    command -v wget >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
     
 }
 
