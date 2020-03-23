@@ -29,4 +29,7 @@ The Wireless-Attacking script...
 + Script update option
 + Crack .cap file (aircrack-ng)
 + New UI
-
++ Bluetooth PoD option
++ Bluetooth scan option
++ new info banners
++ Color improved
