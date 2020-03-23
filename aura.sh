@@ -346,7 +346,7 @@ mmode()
     case $quest in 
         [yY][eE][sS]|[yY])
             read -p "CHANNEL: " chnl
-            printf "$quest "
+            printf '\n\e[0m[\e[93mQUEST\e[0m] '
             read -r -p "ENABLE MONITOR MODE ON $iface? (Y/N): " t
             case $t in
                 [yY][eE][sS]|[yY])
@@ -371,7 +371,7 @@ mmode()
             esac
             ;;
         [nN][oO]|[nN])
-            printfo "$quest "
+            printfo "\n\e[0m[\e[93mQUEST\e[0m] "
             read -r -p "ENABLE MONITOR MODE ON $iface? (y/n): " t
             case $t in
                 [yY][eE][sS]|[yY])
@@ -408,7 +408,7 @@ mmodeoff()
     banner
     printf "\e[0m\n"
     read -p "INTERFACE: " iface
-    printf "$quest"
+    printf "$quest "
     read -r -p "START NETWORK-MANAGER SERVICE AFTER DISABLING MONITOR MODE? (Y/N): " networkm
     printf "\n"
     case $networkm in
@@ -754,7 +754,7 @@ wep_crack()
         [cC][uU][sS][tT][oO][mM]|[cC])
             printf "\e[0m"
             read -p "WORDLIST (.txt): " wordlist
-            printf "$quest "
+            printf "\n\e[0m[\e[93mQUEST\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -805,7 +805,7 @@ wpa_crack()
         [cC][uU][sS][tT][oO][mM]|[cC])
             printf "\e[0m"
             read -p "WORDLIST (.txt): " wordlist
-            printf "$quest "
+            printf "\n\e[0m[\e[93mQUEST\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -867,7 +867,7 @@ crackap2()
 
 check1()
 {
-            printf "$quest "
+            printf "\n\e[0m[\e[93mQUEST\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -891,7 +891,7 @@ check1()
 
 check2()
 {
-            printf "$quest "
+            printf "\n\e[0m[\e[93mQUEST\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
