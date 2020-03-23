@@ -2,15 +2,15 @@
 # AURA - Kali Linux helping shellscript 
 
 #
-red='\n\e[0m[\e[91mERROR\e[0m] INCORRECT OPTION...\n\n'
-inf='\n\e[0m[\e[92mINFO\e[0m]'
-quest='\n\e[0m[\e[93mQUEST\e[0m]'
+red='\n\e[0m[\e[91m!\e[0m] INCORRECT OPTION...\n\n'
+inf='\n\e[0m[\e[92mi\e[0m]'
+quest='\n\e[0m[\e[93m?\e[0m]'
 #
 
 f_toolscheck()
 {
     
-info="REQUIES TOOL NOT FOUND! INSTALL IT USING INSTALL.SH..."
+info="\n\e[0m[\e[91m!\e[0m] REQUIES TOOL NOT FOUND! INSTALL IT USING INSTALL.SH..."
     
     command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
     command -v macchanger >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; exit; }
@@ -346,7 +346,7 @@ mmode()
     case $quest in 
         [yY][eE][sS]|[yY])
             read -p "CHANNEL: " chnl
-            printf '\n\e[0m[\e[93mQUEST\e[0m] '
+            printf '\n\e[0m[\e[93m?\e[0m] '
             read -r -p "ENABLE MONITOR MODE ON $iface? (Y/N): " t
             case $t in
                 [yY][eE][sS]|[yY])
@@ -371,7 +371,7 @@ mmode()
             esac
             ;;
         [nN][oO]|[nN])
-            printf "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93m?\e[0m] "
             read -r -p "ENABLE MONITOR MODE ON $iface? (y/n): " t
             case $t in
                 [yY][eE][sS]|[yY])
@@ -617,7 +617,7 @@ ifaces()
 rootcheck()
 {
 if [[ $EUID -ne 0 ]]; then
-   echo "$inf THIS SCRIPT MUST BE RUN AS ROOT! ABORTING...\n" 
+   echo "\n\e[0m[\e[91m!\e[0m] THIS SCRIPT MUST BE RUN AS ROOT! ABORTING...\n" 
    exit 1
 fi
 }
@@ -754,7 +754,7 @@ wep_crack()
         [cC][uU][sS][tT][oO][mM]|[cC])
             printf "\e[0m"
             read -p "WORDLIST (.txt): " wordlist
-            printf "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93m?\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -805,7 +805,7 @@ wpa_crack()
         [cC][uU][sS][tT][oO][mM]|[cC])
             printf "\e[0m"
             read -p "WORDLIST (.txt): " wordlist
-            printf "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93m?\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -867,7 +867,7 @@ crackap2()
 
 check1()
 {
-            printf "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93m?\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -891,7 +891,7 @@ check1()
 
 check2()
 {
-            printf "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93m?\e[0m] "
             read -p "CRACK $capture? (y/n): " capturequest
             case $capturequest in
                 [yY][eE][sS]|[yY])
@@ -919,10 +919,10 @@ bt_pod()
     printf "\e[0m\n"
     read -p "INTERFACE: " device
     read -p "TARGET: " target
+    printf '\n\e[0m[\e[93m?\e[0m] '
     read -p "START ATTACK? (y/n): " logs
     case $logs in
         [yY][eE][sS]|[yY])
-            read -p "INTERFACE: " device
             printf "$inf STARTING BT PING OF DEATH ATTACK...\n"
             hciconfig $device up
             l2ping -i $device -s 600 -f $target 
