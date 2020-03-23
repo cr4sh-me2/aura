@@ -371,7 +371,7 @@ mmode()
             esac
             ;;
         [nN][oO]|[nN])
-            printfo "\n\e[0m[\e[93mQUEST\e[0m] "
+            printf "\n\e[0m[\e[93mQUEST\e[0m] "
             read -r -p "ENABLE MONITOR MODE ON $iface? (y/n): " t
             case $t in
                 [yY][eE][sS]|[yY])
