@@ -695,7 +695,10 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             printf "$inf UPDATING...\e[0m\n\n"
             sleep 1
             rm aura.sh
+            rm install.sh
+            wget https://raw.githubusercontent.com/rkhunt3r/aura/master/install.sh
             wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
+            chmod +x aura.sh
             chmod +x aura.sh
             printf "$inf "
             read -p "DONE! PRESS [ENTER]..." variable
