@@ -699,7 +699,7 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             wget https://raw.githubusercontent.com/rkhunt3r/aura/master/install.sh
             wget https://raw.githubusercontent.com/rkhunt3r/aura/master/aura.sh
             chmod +x aura.sh
-            chmod +x aura.sh
+            chmod +x install.sh
             printf "$inf "
             read -p "DONE! PRESS [ENTER]..." variable
             bash aura.sh
