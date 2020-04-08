@@ -702,6 +702,7 @@ read -r -p "UPDATE SCRIPT? (Y/N): " questyorn
             chmod +x install.sh
             printf "$inf "
             read -p "DONE! PRESS [ENTER]..." variable
+            bash install.sh
             bash aura.sh
             ;;
         [nN][oO]|[nN])
