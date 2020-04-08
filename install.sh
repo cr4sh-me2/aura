@@ -34,13 +34,11 @@ command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get 
     command -v figlet >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install figlet -y; }
     command -v l2ping >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install bluez -y; }
     command -v ruby >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install ruby -y; }
-    command -v lolcat >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; f_lolcat; }
-    command -v unzip >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install unzip -y; }
+     command -v unzip >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install unzip -y; }
     command -v curl >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install curl -y; }
     command -v wget >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install wget -y; }
 
-f_lolcat()
-{
+command -v lolcat >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; 
 wget https://github.com/busyloop/lolcat/archive/master.zip
 unzip master.zip
 rm -r master.zip
