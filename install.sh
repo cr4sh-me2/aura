@@ -21,10 +21,10 @@ apt update
 
 service="network-manager"
 if [ -f "/etc/init.d/$service" ]; then
-    echo printf "service network-manager is installed!"; sleep 0.5
+    printf '\n\e[0m[\e[92mi\e[0m] Service network-manager is installed!'; sleep 0.5
 else
-   apt-get install network-manager
-fi
+    apt-get install network-manager
+fi 
 
 apt install network-manager -y
 
