@@ -33,3 +33,4 @@ The Wireless-Attacking script...
 + Bluetooth scan option
 + new info banners
 + Color improved
++ New install.sh
