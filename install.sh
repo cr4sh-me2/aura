@@ -17,7 +17,7 @@ info='\n\e[0m[\e[92mi\e[0m] INSTALLING TOOL...\n'
 banner
 read -p "PRESS [ENTER] TO INSTALL..."
 apt update 
-apt install network-manager
+apt install network-manager -y
 
 command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install aircrack-ng; }
     command -v macchanger >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install macchanger; }
