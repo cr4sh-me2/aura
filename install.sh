@@ -17,6 +17,15 @@ info='\n\e[0m[\e[92mi\e[0m] INSTALLING TOOL...\n'
 banner
 read -p "PRESS [ENTER] TO INSTALL..."
 apt update 
+
+
+service="network-manager"
+if [ -f "/etc/init.d/$service" ]; then
+    echo printf "service network-manager is installed!"; sleep 0.5
+else
+   apt-get install network-manager
+fi
+
 apt install network-manager -y
 
 command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install aircrack-ng; }
