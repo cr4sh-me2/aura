@@ -23,10 +23,8 @@ service="network-manager"
 if [ -f "/etc/init.d/$service" ]; then
     printf '\n\e[0m[\e[92mi\e[0m] Service network-manager is installed!\n\n'; sleep 1.2
 else
-    apt-get install network-manager
+    apt-get install network-manager -y
 fi 
-
-apt install network-manager -y
 
 command -v aircrack-ng >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install aircrack-ng; }
     command -v macchanger >/dev/null 2>&1 || { printf >&2 "\e[0m$info\n "; apt-get install macchanger; }
