@@ -3,8 +3,8 @@
 + sudo bash install.sh
 + sudo bash aura.sh
 
-# aura
-The Wireless-Attacking script...
+# AURA - An Easy User Interface For Pentesting Tools
+
 
 # 0.1
 + Deauth WiFi/Client option
