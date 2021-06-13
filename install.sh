@@ -26,8 +26,6 @@ info='\n\e[0m[\e[92mi\e[0m] INSTALLING TOOL...\n'
 
 banner
 read -p "PRESS [ENTER] TO INSTALL..."
-apt update 
-
 
 service="network-manager"
 if [ -f "/etc/init.d/$service" ]; then
