@@ -34,3 +34,13 @@
 + new info banners
 + Color improved
 + New install.sh
+
+# 0.5
++ Scan website option
++ Scan ports, os info options
++ UI improvements
++ Lolcat animation on start
++ Configuration file
++ Option to modify configuration file
++ No network connection info
+
